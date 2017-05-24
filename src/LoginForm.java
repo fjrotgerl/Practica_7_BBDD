@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,7 +17,17 @@ public class LoginForm {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"Connected");
+                InicioForm iniF = new InicioForm();
+
+                JFrame frame = Main.frame;
+                JPanel panel = new JPanel();
+
+                panel.add(iniF.getInicioPanel(), "inicioPanel");
+                panel.setLayout(new CardLayout());
+
+                CardLayout cl = (CardLayout) panel.getLayout();
+                cl.show(panel,"inicioPanel");
+                Main.configSimple(frame,panel,"Inicio");
             }
         });
     }
@@ -24,4 +35,5 @@ public class LoginForm {
     public JPanel getLoginPanel() {
         return loginPanel;
     }
+
 }
