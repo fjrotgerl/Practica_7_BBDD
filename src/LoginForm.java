@@ -28,6 +28,7 @@ public class LoginForm {
                 CardLayout cl = (CardLayout) panel.getLayout();
                 cl.show(panel,"inicioPanel");
                 Main.configSimple(frame,panel,"Inicio");
+                Main.initMenu(frame);
             }
         });
     }

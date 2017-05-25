@@ -12,7 +12,7 @@ public class Main {
     static JMenuBar jmb = new JMenuBar();
 
     public static void main(String[] args) {
-        ReadersForm rf = new ReadersForm();
+        AñadirSocioForm rf = new AñadirSocioForm();
         LoginForm lf = new LoginForm();
 
         JPanel panel = new JPanel();
@@ -53,6 +53,23 @@ public class Main {
         mSocios.add(miSocioBorrar);
         mSocios.add(miSocioModificar);
 
+        miSocioAñadir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AñadirSocioForm asf = new AñadirSocioForm();
+
+                JFrame frame = Main.frame;
+                JPanel panel = new JPanel();
+
+                panel.add(asf.getAñadirSociPanel(), "añadirSociPanel");
+                panel.setLayout(new CardLayout());
+
+                CardLayout cl = (CardLayout) panel.getLayout();
+                cl.show(panel,"añadirSociPanel");
+                Main.configSimple(frame, panel,"Añadir socio");
+            }
+        });
+
         JMenu mOpciones = new JMenu("Opciones");
         jmb.add(mOpciones);
         JMenuItem mOpcionCerrarSesion = new JMenuItem("Cerrar sesión");
@@ -72,11 +89,9 @@ public class Main {
     }
 
     public static void configSimple(JFrame frame, JPanel panel, String titol) {
-        initMenu(frame);
         frame.setTitle(titol);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(panel);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setUndecorated(true);
     }
 }
