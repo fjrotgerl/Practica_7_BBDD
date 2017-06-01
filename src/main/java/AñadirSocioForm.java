@@ -1,4 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Kekko on 23/05/2017.
@@ -24,6 +27,16 @@ public class AñadirSocioForm {
     private JTextField tel1Text;
     private JTextField tel2Text;
     private JTextField emailText;
+
+    public AñadirSocioForm() {
+        cancelarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cl = (CardLayout) Main.frame.getContentPane().getLayout();
+                cl.show(Main.frame.getContentPane(),"inicioPanel");
+                Main.configSimple(Main.frame,"Inicio");
+            }
+        });
+    }
 
     public JPanel getAñadirSociPanel() {
         return añadirSociPanel;

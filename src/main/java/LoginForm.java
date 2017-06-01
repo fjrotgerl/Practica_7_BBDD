@@ -15,20 +15,11 @@ public class LoginForm {
 
     public LoginForm() {
         loginButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
-                InicioForm iniF = new InicioForm();
-
-                JFrame frame = Main.frame;
-                JPanel panel = new JPanel();
-
-                panel.add(iniF.getInicioPanel(), "inicioPanel");
-                panel.setLayout(new CardLayout());
-
-                CardLayout cl = (CardLayout) panel.getLayout();
-                cl.show(panel,"inicioPanel");
-                Main.configSimple(frame,panel,"Inicio");
-                Main.initMenu(frame);
+                CardLayout cl = (CardLayout) Main.frame.getContentPane().getLayout();
+                cl.show(Main.frame.getContentPane(),"inicioPanel");
+                Main.configSimple(Main.frame,"Inicio");
+                Main.initMenu(Main.frame);
             }
         });
     }

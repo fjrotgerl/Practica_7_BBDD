@@ -8,17 +8,20 @@ import java.awt.event.ActionListener;
  */
 public class Main {
 
-    static JFrame frame = new JFrame();
+    static  JFrame frame = new JFrame();
     static JMenuBar jmb = new JMenuBar();
 
     public static void main(String[] args) {
-        AñadirSocioForm rf = new AñadirSocioForm();
+        AñadirSocioForm asf = new AñadirSocioForm();
         LoginForm lf = new LoginForm();
+        InicioForm iniF = new InicioForm();
 
         JPanel panel = new JPanel();
 
         panel.setLayout(new CardLayout());
         panel.add(lf.getLoginPanel(), "loginPanel");
+        panel.add(asf.getAñadirSociPanel(), "añadirSociPanel");
+        panel.add(iniF.getInicioPanel(), "inicioPanel");
 
         // Em torna un objecte de tipus Layout
         // Hi ha que fer un cast a castLayout
@@ -29,6 +32,7 @@ public class Main {
         frame.setSize(300, 150);
         frame.setContentPane(panel);
         centreWindow(frame);
+
     }
 
     // Cream la barra superior
@@ -53,20 +57,12 @@ public class Main {
         mSocios.add(miSocioBorrar);
         mSocios.add(miSocioModificar);
 
+
         miSocioAñadir.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
-                AñadirSocioForm asf = new AñadirSocioForm();
-
-                JFrame frame = Main.frame;
-                JPanel panel = new JPanel();
-
-                panel.add(asf.getAñadirSociPanel(), "añadirSociPanel");
-                panel.setLayout(new CardLayout());
-
-                CardLayout cl = (CardLayout) panel.getLayout();
-                cl.show(panel,"añadirSociPanel");
-                Main.configSimple(frame, panel,"Añadir socio");
+                CardLayout cl = (CardLayout) Main.frame.getContentPane().getLayout();
+                cl.show(Main.frame.getContentPane(),"añadirSociPanel");
+                Main.configSimple(Main.frame,"Añadir socio");
             }
         });
 
@@ -88,10 +84,10 @@ public class Main {
         frame.setLocation(x, y);
     }
 
-    public static void configSimple(JFrame frame, JPanel panel, String titol) {
+    public static void configSimple(JFrame frame, String titol) {
+        CardLayout cl = (CardLayout) frame.getContentPane().getLayout();
         frame.setTitle(titol);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(panel);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 }
