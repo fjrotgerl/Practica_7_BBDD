@@ -1,3 +1,5 @@
+import sun.applet.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -36,9 +38,87 @@ public class AñadirSocioForm {
                 Main.configSimple(Main.frame,"Inicio");
             }
         });
+
+        guardarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                DataBase.dataBase.insertSocio(Integer.parseInt(getIdText().getText()),getDniText().getText(),
+                        getNameText().getText(),getPrimerApellido().getText(),getSegundoApellido().getText(),
+                        getDireccionText().getText(),Integer.parseInt(getCpText().getText()),getProvinciaText().getText(),
+                        getPaisText().getText(),Integer.parseInt(getTel1Text().getText()), (Integer.parseInt(getTel2Text().getText())),
+                        getEmailText().getText());
+            }
+        });
     }
 
     public JPanel getAñadirSociPanel() {
         return añadirSociPanel;
+    }
+
+    public JTextField getDniText() {
+        return dniText;
+    }
+
+    public JTextField getNameText() {
+        return nameText;
+    }
+
+    public JComboBox getComboBox1() {
+        return comboBox1;
+    }
+
+    public JComboBox getComboBox2() {
+        return comboBox2;
+    }
+
+    public JComboBox getComboBox3() {
+        return comboBox3;
+    }
+
+    public JRadioButton getHombreRadioButton() {
+        return hombreRadioButton;
+    }
+
+    public JRadioButton getMujerRadioButton() {
+        return mujerRadioButton;
+    }
+
+    public JTextField getIdText() {
+        return idText;
+    }
+
+    public JTextField getPrimerApellido() {
+        return primerApellido;
+    }
+
+    public JTextField getSegundoApellido() {
+        return segundoApellido;
+    }
+
+    public JTextField getDireccionText() {
+        return direccionText;
+    }
+
+    public JTextField getCpText() {
+        return cpText;
+    }
+
+    public JTextField getProvinciaText() {
+        return provinciaText;
+    }
+
+    public JTextField getPaisText() {
+        return paisText;
+    }
+
+    public JTextField getTel1Text() {
+        return tel1Text;
+    }
+
+    public JTextField getTel2Text() {
+        return tel2Text;
+    }
+
+    public JTextField getEmailText() {
+        return emailText;
     }
 }

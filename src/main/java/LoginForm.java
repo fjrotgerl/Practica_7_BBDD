@@ -13,13 +13,20 @@ public class LoginForm {
     private JPasswordField userPass;
     private JPanel loginPanel;
 
-    public LoginForm() {
+    private boolean checkLogin;
+
+    public LoginForm() throws Exception{
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout) Main.frame.getContentPane().getLayout();
-                cl.show(Main.frame.getContentPane(),"inicioPanel");
-                Main.configSimple(Main.frame,"Inicio");
-                Main.initMenu(Main.frame);
+                checkLogin = DataBase.dataBase.checkLogin(userName.getText(),new String(userPass.getPassword()));
+                if (checkLogin) {
+                    CardLayout cl = (CardLayout) Main.frame.getContentPane().getLayout();
+                    cl.show(Main.frame.getContentPane(), "inicioPanel");
+                    Main.configSimple(Main.frame, "Inicio");
+                    Main.initMenu(Main.frame);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login erróneo");
+                }
             }
         });
     }

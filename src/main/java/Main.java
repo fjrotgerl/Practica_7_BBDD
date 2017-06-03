@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
  */
 public class Main {
 
-    static  JFrame frame = new JFrame();
+    static JFrame frame = new JFrame();
     static JMenuBar jmb = new JMenuBar();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         AñadirSocioForm asf = new AñadirSocioForm();
         LoginForm lf = new LoginForm();
         InicioForm iniF = new InicioForm();
@@ -29,6 +29,7 @@ public class Main {
         cl.show(panel,"loginPanel");
         frame.setTitle("Login");
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 150);
         frame.setContentPane(panel);
         centreWindow(frame);
